@@ -67,6 +67,32 @@ def hospitalstatus(list1, list2) :
     #is the hospital closed or open
     return len(list1) + len(list2) != 0
 
+def filter_patients (waitingroom) :
+    for patient in waitingroom :
+        if patient["severity"] < 4 :
+            patient_id = patient["patient_id"]
+            patient_severity = patient["severity"]
+            print(f"Patient {patient_id} with a severity of {patient_severity} has been sent home")
+            waitingroom.remove(patient)
+
+def admitpatient(waitingroom, beds, time):
+    waitingroom = sorted(waitingroom, key=lambda k: k['severity'])
+
+    for patient in waitingroom :
+        if beds == None or len(beds) < 4 :
+
+            patient_id = patient["patient_id"]
+            patient_severity = patient["severity"]
+            patient_admit_time = time
+
+            admit_patient = {
+                "admit_patient_id": patient_id,
+                "admit_patient_severity": patient_severity,
+                "admit_patient_time": patient_admit_time
+            }
+            beds.append(admit_patient)
+            print(f"Admitted patient {patient_id} with a severity of {patient_severity} at {patient_admit_time}")
+
 def scenario(scenario_list) :
     print("Hello World")
     time = 0
@@ -77,12 +103,10 @@ def scenario(scenario_list) :
 
         print(time)
 
-        for patient in waitingroom :
-            if patient["severity"] < 4 :
-                patient_id = patient["patient_id"]
-                patient_severity = patient["severity"]
-                print(f"Patient {patient_id} with a severity of {patient_severity} has been sent home")
-                waitingroom.remove(patient)
+        filter_patients(waitingroom)
+        admitpatient(waitingroom, beds, time)
+
+
 
 
 
@@ -90,6 +114,7 @@ def scenario(scenario_list) :
 
 
         #if time > 300:
+
         time += 1
         break
 
