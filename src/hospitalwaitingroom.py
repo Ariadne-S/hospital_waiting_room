@@ -68,17 +68,17 @@ def hospitalstatus(list1, list2) :
     return len(list1) + len(list2) != 0
 
 def filter_patients (waitingroom) :
-    for patient in waitingroom :
+    for patient in waitingroom.copy() :
         if patient["severity"] < 4 :
             patient_id = patient["patient_id"]
             patient_severity = patient["severity"]
             print(f"Patient {patient_id} with a severity of {patient_severity} has been sent home")
             waitingroom.remove(patient)
 
-def admitpatient(waitingroom, beds, time):
-    waitingroom = sorted(waitingroom, key=lambda k: k['severity'])
+def admitpatient(waitingroom, beds, time) :
+    sorted_waitingroom = sorted(waitingroom, key=lambda k: k['severity'])
 
-    for patient in waitingroom :
+    for patient in sorted_waitingroom :
         if beds == None or len(beds) < 4 :
 
             patient_id = patient["patient_id"]
@@ -91,7 +91,17 @@ def admitpatient(waitingroom, beds, time):
                 "admit_patient_time": patient_admit_time
             }
             beds.append(admit_patient)
-            print(f"Admitted patient {patient_id} with a severity of {patient_severity} at {patient_admit_time}")
+            waitingroom.remove(patient)
+            print(f"Admitted patient {patient_id} with a severity of {patient_severity} at 00:00:{patient_admit_time}")
+
+def bedtracker(beds, time) :
+    for patient in beds.copy() :
+        if time - patient["admit_patient_time"] >= 10 :
+            admit_patient_id = patient["admit_patient_id"]
+            admit_patient_time = patient["admit_patient_time"]
+
+            print(f"Patient {admit_patient_id} has vacated bed as of 00:00:{time}")
+            beds.remove(patient)
 
 def scenario(scenario_list) :
     print("Hello World")
@@ -99,24 +109,15 @@ def scenario(scenario_list) :
     waitingroom = scenario_list.copy()
     beds = []
 
-    while hospitalstatus(waitingroom, beds):
-
-        print(time)
+    while hospitalstatus(waitingroom, beds) :
 
         filter_patients(waitingroom)
         admitpatient(waitingroom, beds, time)
-
-
-
-
-
-
-
-
-        #if time > 300:
+        bedtracker(beds, time)
 
         time += 1
-        break
+        if time > 100:
+            break
 
 
 
