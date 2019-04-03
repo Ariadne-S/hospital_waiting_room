@@ -48,3 +48,13 @@ scenario5 = [
     {"patient_id": "ah", "severity":8, "arrival_time": 12},
     {"patient_id": "ai", "severity":2, "arrival_time": 12},
 ]
+
+scenario_choice = {
+    1: scenario1,
+    2: scenario2,
+    3: scenario3,
+    4: scenario4,
+    5: scenario5
+}
+
+selection_options = [1, 2, 3, 4, 5]
