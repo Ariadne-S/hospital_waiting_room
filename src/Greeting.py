@@ -30,7 +30,8 @@ def select_scenario() :
     elif int(selection) in ScenarioData.selection_options :
         scenario_data = ScenarioData.scenario_choice[int(selection)]
         print(f"\nWelcome to Scenario {selection}\n")
-        HospitalWaitingRoom.run_scenario(scenario_data)
+        output = HospitalWaitingRoom.run_scenario(scenario_data)
+        print_hospital_activity(output)
         select_scenario()
     else :
         print("\nUnfortunately your selection was not valid, please try again.")
@@ -40,7 +41,16 @@ def startup() :
     greeting()
     select_scenario()
 
+def print_hospital_activity(output) :
+    for activity in output :
+        time = activity["time"]
+        action = activity["action"]
+        patient_id = activity["patient_id"]
+        severity = activity["severity"]
+        description = "has" if (action == "Arrived" or action == "Vacated") else "has been"
 
+        print(f"00:{time:02d}\t[{action}]\tPatient \"{patient_id}\" with a severity of {severity} {description} {action.lower()} ")
+    print("\nHospital is closed\n")
 
 
 
