@@ -33,10 +33,10 @@ def get_patient_severity(patient_count):
             return severity_input_int
         else:
             print("Your input must be a number bewteen 1 and 10, please try again.")
-            get_patient_arrival_time(patient_count)
+            return get_patient_severity(patient_count)
     except:
         print("Your input must be a number bewteen 1 and 10, please try again.")
-        get_patient_arrival_time(patient_count)
+        return get_patient_severity(patient_count)
 
 def get_patient_arrival_time(patient_count):
     print(f"{patient_count}.3:\tWhat time does this patient arrive? [0 - 1440]")
@@ -47,10 +47,10 @@ def get_patient_arrival_time(patient_count):
             return arrival_time_input_int
         else:
             print("Your input must be a number bewteen 1 and 1440, please try again.")
-            get_patient_arrival_time(patient_count)
+            return get_patient_arrival_time(patient_count)
     except:
         print("Your input must be a number +bewteen 1 and 1440, please try again.")
-        get_patient_arrival_time(patient_count)
+        return get_patient_arrival_time(patient_count)
 
 def new_patient_option(patient_arrivals) :
     print("Do you want to add another patient? [Y/N]")
