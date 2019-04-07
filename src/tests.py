@@ -7,7 +7,7 @@ class TestScenarios(unittest.TestCase) :
 
 
     def test_scenario1(self) :
-        scenario_data = ScenarioData.scenario1
+        scenario_data = ScenarioData.scenario1["arrivals"]
         results = HospitalWaitingRoom.run_scenario(scenario_data)
         expectations = [
             {'time': 0, 'action': 'Arrived', 'patient_id': 'a', 'severity': 6},
@@ -25,7 +25,7 @@ class TestScenarios(unittest.TestCase) :
         self.assertListEqual(results, expectations)
 
     def test_scenario2(self) :
-        scenario_data = ScenarioData.scenario2
+        scenario_data = ScenarioData.scenario2["arrivals"]
         results = HospitalWaitingRoom.run_scenario(scenario_data)
         expectations = [
             {'time': 0, 'action': 'Arrived', 'patient_id': 'e', 'severity': 7},
@@ -50,7 +50,7 @@ class TestScenarios(unittest.TestCase) :
         self.assertListEqual(results, expectations)
 
     def test_scenario3(self) :
-        scenario_data = ScenarioData.scenario3
+        scenario_data = ScenarioData.scenario3["arrivals"]
         results = HospitalWaitingRoom.run_scenario(scenario_data)
         expectations = [
             {'time': 0, 'action': 'Arrived', 'patient_id': 'k', 'severity': 7},
@@ -78,7 +78,7 @@ class TestScenarios(unittest.TestCase) :
         self.assertListEqual(results, expectations)
 
     def test_scenario4(self) :
-        scenario_data = ScenarioData.scenario4
+        scenario_data = ScenarioData.scenario4["arrivals"]
         results = HospitalWaitingRoom.run_scenario(scenario_data)
         expectations = [
             {'time': 0, 'action': 'Arrived', 'patient_id': 'r', 'severity': 6},
@@ -103,7 +103,7 @@ class TestScenarios(unittest.TestCase) :
         self.assertListEqual(results, expectations)
 
     def test_scenario5(self) :
-        scenario_data = ScenarioData.scenario5
+        scenario_data = ScenarioData.scenario5["arrivals"]
         results = HospitalWaitingRoom.run_scenario(scenario_data)
         expectations = [
             {'time': 0, 'action': 'Arrived', 'patient_id': 'x', 'severity': 8},
