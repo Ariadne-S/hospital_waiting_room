@@ -13,7 +13,6 @@ def new_hospital_action_dict(time, p_id, severity) :
 def patient_arrives (scenario_list, time, waitingroom, output) :
     scenario_patients = scenario_list.copy()
     for patient in scenario_patients:
-
         if patient["arrival_time"] == time :
             arrived_patient = new_hospital_action_dict(time, patient["patient_id"], patient["severity"])
             output_dict = new_output_dict(time, "Arrived", patient["patient_id"], patient["severity"])
