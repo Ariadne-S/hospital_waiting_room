@@ -6,6 +6,10 @@ import CreateScenario
 
 scenario_choice = ScenarioData.scenario_choice
 
+def startup() :
+    greeting()
+    select_scenario()
+
 def dayportion(datetime) :
   hour = datetime.hour
   if hour < 12 :
@@ -22,21 +26,21 @@ def greeting() :
   print()
 
 def select_scenario() :
-    print("Please input the corresponding key to enter a Scenario, or Q to quit.")
+    print("Please input the corresponding key to enter a scenario, or Q to quit.")
     options = len(scenario_choice)
     i = 1
     for scenario in scenario_choice:
         name = scenario["name"]
         print(f"\t{str(i)}:\t{name}")
         i += 1
-    print("\tn:\tBuild you own Scenario")
-    selection = input()
+    print("\tn:\tBuild you own scenario")
+    selection = input().lower()
 
-    if selection.lower() == "q" :
+    if selection == "q" :
         exit()
-    elif selection.lower() =="n":
+    elif selection =="n":
         CreateScenario.create_new_scenario(scenario_choice)
-    elif int(selection) in range(options + 1):
+    elif int(selection) in range(options + 1) :
         scenario_index = int(selection) - 1
         start_run_scenario(scenario_index)
     else :
@@ -63,6 +67,3 @@ def start_run_scenario(scenario_index) :
     select_scenario()
 
 
-def startup() :
-    greeting()
-    select_scenario()

@@ -1,7 +1,7 @@
 
 
 scenario1 = {
-    "name": "scenario 1",
+    "name": "Scenario 1",
     "arrivals": [
         {"patient_id": "a", "severity":6, "arrival_time": 0},
         {"patient_id": "b", "severity":3, "arrival_time": 0},
@@ -12,7 +12,7 @@ scenario1 = {
 
 
 scenario2 = {
-    "name": "scenario 2",
+    "name": "Scenario 2",
     "arrivals": [
         {"patient_id": "e", "severity":7, "arrival_time": 0},
         {"patient_id": "f", "severity":3, "arrival_time": 0},
@@ -24,7 +24,7 @@ scenario2 = {
 }
 
 scenario3 = {
-    "name": "scenario 3",
+    "name": "Scenario 3",
     "arrivals": [
         {"patient_id": "k", "severity":7, "arrival_time": 0},
         {"patient_id": "l", "severity":6, "arrival_time": 0},
@@ -37,7 +37,7 @@ scenario3 = {
 }
 
 scenario4 = {
-    "name": "scenario 4",
+    "name": "Scenario 4",
     "arrivals": [
         {"patient_id": "r", "severity":6, "arrival_time": 0},
         {"patient_id": "s", "severity":3, "arrival_time": 0},
@@ -49,7 +49,7 @@ scenario4 = {
 }
 
 scenario5 = {
-    "name": "scenario 5",
+    "name": "Scenario 5",
     "arrivals": [
         {"patient_id": "x", "severity":8, "arrival_time": 0},
         {"patient_id": "y", "severity":6, "arrival_time": 0},

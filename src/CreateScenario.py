@@ -63,13 +63,12 @@ def build_scenario(scenario_name, patient_arrivals) :
     ScenarioData.scenario_choice.append(scenario_dict)
 
 def run_or_select_option(senario_index, patient_arrivals, scenario_name) :
-    print("What would you like to do next?\n\tA:\tAdd another patient\n\tR:\tRun Scenario\n\tE:\tExit to main menu?")
+    print("What would you like to do next?\n\tA:\tAdd another patient\n\tR:\tRun scenario\n\tE:\tExit to main menu?")
     selection = input().lower()
     if selection == "r" :
         build_scenario(scenario_name, patient_arrivals)
         Greeting.start_run_scenario(senario_index)
     elif selection == "a":
-
         add_new_patient(patient_arrivals)
         run_or_select_option(senario_index, patient_arrivals, scenario_name)
     elif selection == "e":
@@ -78,5 +77,5 @@ def run_or_select_option(senario_index, patient_arrivals, scenario_name) :
     elif selection == "q" :
         quit()
     else:
-        print("The selection you have made is not valid. Please try again:")
+        print("The selection you have made is not valid. Please try again.")
         run_or_select_option(senario_index, patient_arrivals, scenario_name)
