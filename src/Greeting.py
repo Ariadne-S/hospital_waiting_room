@@ -35,13 +35,14 @@ def select_scenario() :
         i += 1
     print("\tn:\tBuild you own scenario")
     selection = input().lower()
+    selection_int = input_int(selection)
 
     if selection == "q" :
         exit()
     elif selection =="n":
         CreateScenario.create_new_scenario(scenario_choice)
-    elif int(selection) in range(options + 1) :
-        scenario_index = int(selection) - 1
+    elif selection_int in range(options + 1) :
+        scenario_index = selection_int - 1
         start_run_scenario(scenario_index)
     else :
         print("\nUnfortunately your selection was not valid, please try again.")
@@ -65,5 +66,12 @@ def start_run_scenario(scenario_index) :
     output = HospitalWaitingRoom.run_scenario(scenario_data)
     print_hospital_activity(output)
     select_scenario()
+
+def input_int(input) :
+    try :
+        selection_int = int(selection)
+        return selection_int
+    except :
+        return -1
 
 
