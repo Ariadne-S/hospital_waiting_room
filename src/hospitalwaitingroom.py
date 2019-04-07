@@ -38,7 +38,6 @@ def admit_patient(waitingroom, beds, time, output) :
             output.append(output_dict)
             waitingroom.remove(patient)
 
-
 def bed_tracker(beds, time, output) :
     if len(beds) > 0 :
         for patient in beds.copy() :
@@ -63,7 +62,4 @@ def run_scenario(scenario_list) :
 
         time += 1
         patient_arrives(scenario_patients, time, waitingroom, output)
-        if time > 100:
-            break
-
     return output
