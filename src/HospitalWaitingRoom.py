@@ -1,8 +1,8 @@
 
 import ScenarioData
 
-def hospital_open(waitingroom, beds) :
-    return len(waitingroom) + len(beds) != 0
+def hospital_open(pending_patients, waitingroom, beds) :
+    return len(pending_patients) + len(waitingroom) + len(beds) != 0
 
 def new_output_dict(time, action, p_id, severity) :
     return {"time": time, "action": action, "patient_id":p_id, "severity": severity}
@@ -18,6 +18,7 @@ def patient_arrives (scenario_list, time, waitingroom, output) :
             output_dict = new_output_dict(time, "Arrived", patient["patient_id"], patient["severity"])
             waitingroom.append(arrived_patient)
             output.append(output_dict)
+            scenario_list.remove(patient)
 
 def filter_patients (waitingroom, time, output) :
     for patient in waitingroom.copy() :
@@ -47,18 +48,18 @@ def bed_tracker(beds, time, output) :
 
 def run_scenario(scenario_list) :
     time = 0
-    scenario_patients = scenario_list.copy()
+    pending_patients = scenario_list.copy()
     beds = []
     waitingroom = []
     output = []
 
-    patient_arrives(scenario_patients, 0, waitingroom, output)
+    patient_arrives(pending_patients, 0, waitingroom, output)
 
-    while hospital_open(waitingroom, beds) :
+    while hospital_open(pending_patients, waitingroom, beds) :
         filter_patients(waitingroom, time, output)
         bed_tracker(beds, time, output)
         admit_patient(waitingroom, beds, time, output)
 
         time += 1
-        patient_arrives(scenario_patients, time, waitingroom, output)
+        patient_arrives(pending_patients, time, waitingroom, output)
     return output

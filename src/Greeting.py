@@ -41,7 +41,7 @@ def select_scenario() :
         exit()
     elif selection =="n":
         CreateScenario.create_new_scenario(scenario_choice)
-    elif selection_int in range(options + 1) :
+    elif selection_int in range(1, options + 1) :
         scenario_index = selection_int - 1
         start_run_scenario(scenario_index)
     else :
@@ -69,7 +69,7 @@ def start_run_scenario(scenario_index) :
 
 def input_int(input) :
     try :
-        selection_int = int(selection)
+        selection_int = int(input)
         return selection_int
     except :
         return -1

@@ -43,13 +43,13 @@ def get_patient_arrival_time(patient_count):
     arrival_time_input = input()
     try:
         arrival_time_input_int = int(arrival_time_input)
-        if arrival_time_input_int in range(0,1441) :
+        if (arrival_time_input_int >= 0 and arrival_time_input_int <= 1440) :
             return arrival_time_input_int
         else:
             print("Your input must be a number bewteen 1 and 1440, please try again.")
             return get_patient_arrival_time(patient_count)
     except:
-        print("Your input must be a number +bewteen 1 and 1440, please try again.")
+        print("Your input must be a number bewteen 1 and 1440, please try again.")
         return get_patient_arrival_time(patient_count)
 
 def new_patient_option(patient_arrivals) :
